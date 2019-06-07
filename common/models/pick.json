@@ -1,0 +1,39 @@
+{
+  "name": "pick",
+  "plural": "picks",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "userId": {
+      "type": "number",
+      "required": true
+    },
+    "nbaPlayerId": {
+      "type": "number",
+      "required": true
+    },
+    "score": {
+      "type": "number",
+      "default": 0
+    },
+    "bestPick": {
+      "type": "boolean",
+      "default": false
+    },
+    "worstPick": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

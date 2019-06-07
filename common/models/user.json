@@ -1,0 +1,26 @@
+{
+  "name": "user",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "money": {
+      "type": "number",
+      "default": 0
+    },
+	"points": {
+      "type": "number",
+      "default": 0
+    },
+    "teamId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
