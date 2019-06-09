@@ -15,11 +15,11 @@ var options = {
 	json: true // Automatically parses the JSON string in the response
 };
 
-var today = new Date("May 27, 2019");
-
+var today = new Date();
 
 //----- SCRIPT -----//
 
+// Formating date to API form
 today.setUTCHours(0);
 today.setUTCMinutes(0);
 today.setUTCSeconds(0);
@@ -28,12 +28,13 @@ today.setUTCMilliseconds(0);
 var yesterday = today.setDate(today.getDate() - 1);
 var yesterdayStr = dateToString(yesterday);
 
-console.log("Updating TTFL Pick score for the following date : " + yesterdayStr);
+console.log("Updating TTFLPicks scores for the following date : " + yesterdayStr);
 
 options.uri = scheduleUrl;
 
 // HTTP GET : gets all scheduled games 
 request(options).then(function(response) {
+	
 	// Searches through all games to find the ones played yesterday
 	// For said games we fetch the box score and use player's stats to calculate the pick score
 	for (var game of response.league.standard) {
@@ -41,12 +42,12 @@ request(options).then(function(response) {
 		if (game.startDateEastern == yesterdayStr) {
 			var gameId = game.gameId;
 			
-			console.log("------- GAME ------");
-			console.log(game);
+			//console.log("------- GAME ------");
+			//console.log(game);
 			
 			boxScoreUrl = boxScoreUrl.replace("{{gameDate}}", yesterdayStr);
 			boxScoreUrl = boxScoreUrl.replace("{{gameId}}", gameId);
-			console.log(boxScoreUrl);
+			//console.log(boxScoreUrl);
 			options.uri = boxScoreUrl;
 			
 			// We fetch the game's boxscore
@@ -57,7 +58,7 @@ request(options).then(function(response) {
 				// Foreach active player in a game we checked if a ttfl user picked him
 				for (let activePlayer of activePlayers)
 				{
-					console.log("ID CHECK : " + activePlayer.personId);
+					//console.log("ID CHECK : " + activePlayer.personId);
 					
 					var dateUTC = dateToAPIString(yesterday);
 					options.uri = ttflPicksUrl + '?filter={"where": {"nbaPlayerId":' + activePlayer.personId + ',"date":"' + dateUTC + '"}}';
@@ -67,10 +68,10 @@ request(options).then(function(response) {
 					{
 						if (response.length > 0)
 						{
-							console.log('------   PLAYER   ------');
-							console.log(activePlayer);
-							console.log('------   PICK   ------');
-							console.log(response);
+							//console.log('------   PLAYER   ------');
+							//console.log(activePlayer);
+							//console.log('------   PICK   ------');
+							//console.log(response);
 							score = calcScore(activePlayer);
 						}else{
 							score = 0;
@@ -188,6 +189,6 @@ function calcScore(activePlayer) {
 			parseInt(activePlayer.turnovers);
   
   score = bonus - malus;
-  console.log("score : " + score);
+  //console.log("score : " + score);
   return score;
 }

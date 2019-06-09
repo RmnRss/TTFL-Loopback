@@ -18,6 +18,9 @@
     "points": {
       "type": "number",
       "default": 0
+    },
+    "rank": {
+      "type": "number"
     }
   },
   "validations": [],

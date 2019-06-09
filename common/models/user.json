@@ -17,6 +17,9 @@
     },
     "teamId": {
       "type": "number"
+    },
+    "rank": {
+      "type": "number"
     }
   },
   "validations": [],
