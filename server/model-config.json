@@ -40,14 +40,6 @@
     "dataSource": "db-ttfl",
     "public": true
   },
-  "nbaTeam": {
-    "dataSource": "db-ttfl",
-    "public": true
-  },
-  "nbaPlayer": {
-    "dataSource": "db-ttfl",
-    "public": true
-  },
   "pick": {
     "dataSource": "db-ttfl",
     "public": true
