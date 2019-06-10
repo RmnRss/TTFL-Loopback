@@ -60,4 +60,61 @@ module.exports = function(Ttflteam) {
     },
   );
 
+  // Triggers other events on other models
+  Ttflteam.afterRemote('calcPoints', function(context, remoteMethodOutput, next) {
+    console.log('Updating the teams ranking');
+    Ttflteam.updateRanking();
+    next();
+  });
+
+  Ttflteam.updateRanking = function(cb) {
+    Ttflteam.find({order: 'points DESC'}, function(err, data) {
+      let teamsRanked = new Array();
+
+      if (data.length > 0) {
+        let rank = 1;
+        for (let team of data) {
+          team.updateAttribute('rank', rank, function(err, updatedTeam) {
+            teamsRanked.push(updatedTeam);
+            console.log('-----' + updatedTeam);
+          });
+          rank++;
+        }
+        cb(null, teamsRanked);
+      } else {
+        cb(null, teamsRanked);
+      }
+    });
+  };
+
+  Ttflteam.remoteMethod(
+    'updateRanking',
+    {
+      http: {
+        verb: 'get',
+        path: '/updateRanking'
+      },
+      returns: {arg: 'teams', type: 'array'},
+    },
+  );
+
+  Ttflteam.ranking = function(cb) {
+    console.log('Getting teams ranks');
+
+    Ttflteam.find({order: 'rank ASC'}, function(err, data) {
+      cb(null, data);
+    });
+  };
+
+  Ttflteam.remoteMethod(
+    'ranking',
+    {
+      http: {
+        verb: 'get',
+        path: '/ranking',
+      },
+      returns: {arg: 'teams', type: 'array'},
+    },
+  );
+
 };
