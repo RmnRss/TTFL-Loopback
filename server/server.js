@@ -18,9 +18,16 @@ app.start = function() {
   });
 };
 
+var bootOptions = { "appRootDir": __dirname,
+  "bootScripts" : [ "D:/Documents/GitKraken/TTFL-Loopback/server/boot/authentication.js",
+    "D:/Documents/GitKraken/TTFL-Loopback/server/boot/root.js",
+    "D:/Documents/GitKraken/TTFL-Loopback/server/boot/calcPickScores.js",
+    "D:/Documents/GitKraken/TTFL-Loopback/server/boot/boot.js"]
+};
+
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
+boot(app, bootOptions, function(err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`

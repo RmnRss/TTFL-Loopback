@@ -11,7 +11,7 @@
       "type": "number",
       "default": 0
     },
-	"points": {
+    "points": {
       "type": "number",
       "default": 0
     },
@@ -23,7 +23,20 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "picks": {
+      "type": "hasMany",
+      "model": "Pick",
+      "foreignKey": "userId",
+      "primaryKey": "id"
+    },
+    "team": {
+      "type": "hasOne",
+      "model": "Ttflteam",
+      "foreignKey": "teamId",
+      "primaryKey": "id"
+    }
+  },
   "acls": [],
   "methods": {}
 }

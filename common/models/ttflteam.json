@@ -24,7 +24,14 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "members": {
+      "type": "hasMany",
+      "model": "User",
+      "foreignKey": "",
+      "primaryKey": "id"
+    }
+  },
   "acls": [],
   "methods": {}
 }
