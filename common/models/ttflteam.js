@@ -32,7 +32,7 @@ module.exports = function(Ttflteam) {
 
   // Remote method to calculate the points of a team
   Ttflteam.calcPoints = function(teamId, cb) {
-    console.log('Calculating points of teams');
+    // console.log('Calculating points of teams');
 
     Ttflteam.members(teamId, function(err, data) {
       let points = 0;
@@ -40,7 +40,7 @@ module.exports = function(Ttflteam) {
         for (let member of data) {
           points += member.points;
         }
-        console.log(points + ' pts for team : ' + teamId);
+        // console.log(points + ' pts for team : ' + teamId);
         cb(null, points);
       } else {
         cb(null, points);
@@ -76,7 +76,6 @@ module.exports = function(Ttflteam) {
         for (let team of data) {
           team.updateAttribute('rank', rank, function(err, updatedTeam) {
             teamsRanked.push(updatedTeam);
-            console.log('-----' + updatedTeam);
           });
           rank++;
         }
@@ -92,7 +91,7 @@ module.exports = function(Ttflteam) {
     {
       http: {
         verb: 'get',
-        path: '/updateRanking'
+        path: '/updateRanking',
       },
       returns: {arg: 'teams', type: 'array'},
     },

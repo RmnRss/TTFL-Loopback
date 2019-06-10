@@ -20,10 +20,6 @@ var today = new Date();
 // ----- SCRIPT -----//
 
 // Formating date to API form
-today.setUTCHours(0);
-today.setUTCMinutes(0);
-today.setUTCSeconds(0);
-today.setUTCMilliseconds(0);
 
 var yesterday = today.setDate(today.getDate() - 1);
 var yesterdayStr = dateToNBAString(yesterday);

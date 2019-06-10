@@ -20,7 +20,7 @@ module.exports = function(app) {
     for (let user of users) {
       Users.calcPoints(user.id, function(err, points) {
         user.updateAttribute('points', points, function(err, updatedUser) {
-          console.log(updatedUser.length + ' users updated');
+          // console.log(updatedUser.length + ' users updated');
         });
       });
     }
@@ -36,7 +36,7 @@ module.exports = function(app) {
     for (let team of teams) {
       Teams.calcPoints(team.id, function(err, points) {
         team.updateAttribute('points', points, function(err, updatedTeam) {
-          console.log(updatedTeam.length + ' teams updated');
+          // console.log(updatedTeam.length + ' teams updated');
         });
       });
     }

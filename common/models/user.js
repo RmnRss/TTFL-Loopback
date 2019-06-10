@@ -4,7 +4,7 @@ let app = require('../../server/server');
 module.exports = function(User) {
 
   User.calcPoints = function(userId, cb) {
-    console.log('Calculating points of user n° ' + userId);
+    //console.log('Calculating points of user n° ' + userId);
     let Picks = app.models.Pick;
 
     Picks.ofUser(userId, function(err, data) {
@@ -13,7 +13,7 @@ module.exports = function(User) {
         for (let pick of data) {
           points += pick.score;
         }
-        console.log(points + ' pts for user : ' + userId);
+        //console.log(points + ' pts for user : ' + userId);
         cb(null, points);
       } else {
         cb(null, points);
@@ -50,7 +50,6 @@ module.exports = function(User) {
         for (let user of data) {
           user.updateAttribute('rank', rank, function(err, updatedUser) {
             userRanked.push(updatedUser);
-            console.log('-----' + updatedUser);
           });
           rank++;
         }
@@ -72,7 +71,7 @@ module.exports = function(User) {
   );
 
   User.ranking = function(cb) {
-    console.log('Updating the users ranks');
+    console.log('Getting the users ranks');
 
     User.find({order: 'rank ASC'}, function(err, data) {
       cb(null, data);
