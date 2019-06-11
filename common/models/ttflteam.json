@@ -1,6 +1,6 @@
 {
-  "name": "ttflTeam",
-  "plural": "ttflTeams",
+  "name": "ttflteam",
+  "plural": "ttflteams",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

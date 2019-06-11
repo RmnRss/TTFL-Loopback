@@ -26,7 +26,7 @@ module.exports = function(app) {
     }
   });
 
-  let Teams = app.models.ttflTeam;
+  let Teams = app.models.ttflteam;
 
   // Find all user
   Teams.find(JSON.parse(filter), function(err, teams) {
