@@ -37,15 +37,15 @@
     "public": false
   },
   "ttflTeam": {
-    "dataSource": "db-ttfl",
+    "dataSource": "ttfl",
     "public": true
   },
   "pick": {
-    "dataSource": "db-ttfl",
+    "dataSource": "ttfl",
     "public": true
   },
   "user": {
-    "dataSource": "db-ttfl",
+    "dataSource": "ttfl",
     "public": true
   }
 }

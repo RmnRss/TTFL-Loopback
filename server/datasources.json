@@ -3,13 +3,13 @@
     "name": "db",
     "connector": "memory"
   },
-  "db-ttfl": {
+  "ttfl": {
     "host": "127.0.0.1",
     "port": 3306,
     "url": "",
-    "database": "db-ttfl",
+    "database": "ttfl",
     "password": "thisissecure",
-    "name": "db-ttfl",
+    "name": "ttfl",
     "user": "rmnrss",
     "connector": "mysql"
   }
