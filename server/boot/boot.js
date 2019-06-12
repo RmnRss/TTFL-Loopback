@@ -41,4 +41,7 @@ module.exports = function(app) {
       });
     }
   });
+
+	Users.updateRanking(function(err, instance) {});
+	Teams.updateRanking(function(err, instance) {});
 };
