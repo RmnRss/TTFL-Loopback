@@ -30,6 +30,10 @@
     "worstPick": {
       "type": "boolean",
       "default": false
+    },
+    "isUpdated": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],

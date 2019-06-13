@@ -8,14 +8,14 @@ var activePlayers = new Array();
 
 var scheduleUrl = 'http://data.nba.net/10s/prod/v1/2018/schedule.json';
 var boxScoreUrl = 'http://data.nba.net/10s/prod/v1/{{gameDate}}/{{gameId}}_boxscore.json';
-var ttflPicksUrl = 'http://localhost:3000/api/picks';
+var ttflPicksUrl = 'http://localhost:5498/api/picks';
 
 var options = {
   uri: '',
   json: true, // Automatically parses the JSON string in the response
 };
 
-var today = new Date();
+var today = new Date('11 June, 2019');
 
 // ----- SCRIPT -----//
 
@@ -77,6 +77,7 @@ request(options).then(function(response) {
                 uri: ttflPicksUrl + '/' + result.id,
                 form: {
                   score: score,
+		  isUpdated: true	
                 },
                 headers: {},
               };
