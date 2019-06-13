@@ -2,6 +2,8 @@
 let app = require('../../server/server');
 
 module.exports = function(Ttflteam) {
+	
+	Ttflteam.validatesUniquenessOf('name', {message: 'Ce nom d\'equipe n\'est pas disponible'});
 
   // Remote method to get all members of a team
   Ttflteam.members = function(teamId, cb) {

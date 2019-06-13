@@ -2,6 +2,9 @@
 let app = require('../../server/server');
 
 module.exports = function(User) {
+	
+	User.validatesUniquenessOf('username', {message: 'Ce nom d\'utilisateur n\'est pas disponible'});
+	User.validatesUniquenessOf('email', {message: 'Cet email existe déjà'});
 
 	User.calcPoints = function(userId, cb) {
     //console.log('Calculating points of user n° ' + userId);
