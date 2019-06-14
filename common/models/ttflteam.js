@@ -2,8 +2,8 @@
 let app = require('../../server/server');
 
 module.exports = function(Ttflteam) {
-	
-	Ttflteam.validatesUniquenessOf('name', {message: 'Ce nom d\'equipe n\'est pas disponible'});
+
+  Ttflteam.validatesUniquenessOf('name', {message: 'Ce nom d\'equipe n\'est pas disponible'});
 
   // Remote method to get all members of a team
   Ttflteam.members = function(teamId, cb) {
@@ -11,7 +11,7 @@ module.exports = function(Ttflteam) {
     let Users = app.models.User;
 
     Users.find(JSON.parse(filter), function(err, members) {
-      console.log(members.length + ' members found');
+      //console.log(members.length + ' members found');
       cb(null, members);
     });
   };
@@ -64,7 +64,7 @@ module.exports = function(Ttflteam) {
 
   // Triggers other events on other models
   Ttflteam.afterRemote('calcPoints', function(context, remoteMethodOutput, next) {
-    console.log('Updating the teams ranking');
+    //console.log('Updating the teams ranking');
     Ttflteam.updateRanking();
     next();
   });
@@ -100,7 +100,7 @@ module.exports = function(Ttflteam) {
   );
 
   Ttflteam.ranking = function(cb) {
-    console.log('Getting teams ranks');
+    //console.log('Getting teams ranks');
 
     Ttflteam.find({order: 'rank ASC'}, function(err, data) {
       cb(null, data);

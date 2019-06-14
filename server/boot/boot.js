@@ -2,11 +2,10 @@
 
 module.exports = function(app) {
   console.log('Starting Boot Script');
-  // Calculate every pick score
 
-  // Find all picks of yesterday
-
-  // For each one calculate his score
+  let Picks = app.models.Pick;
+  Picks.calcScore(function(err, instance) {
+  });
 
   // Calculate every user points
   let Users = app.models.User;
@@ -14,7 +13,7 @@ module.exports = function(app) {
 
   // Find all user
   Users.find(JSON.parse(filter), function(err, users) {
-    console.log(users.length + ' users found');
+    //console.log(users.length + ' users found');
 
     // Calculate their score
     for (let user of users) {
@@ -30,7 +29,7 @@ module.exports = function(app) {
 
   // Find all user
   Teams.find(JSON.parse(filter), function(err, teams) {
-    console.log(teams.length + ' teams found');
+    //console.log(teams.length + ' teams found');
 
     // Calculate their score
     for (let team of teams) {
@@ -42,6 +41,8 @@ module.exports = function(app) {
     }
   });
 
-	Users.updateRanking(function(err, instance) {});
-	Teams.updateRanking(function(err, instance) {});
+  Users.updateRanking(function(err, instance) {
+  });
+  Teams.updateRanking(function(err, instance) {
+  });
 };

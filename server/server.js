@@ -18,11 +18,11 @@ app.start = function() {
   });
 };
 
-var bootOptions = { "appRootDir": __dirname,
-  "bootScripts" : [ "D:/Documents/GitKraken/TTFL-Loopback/server/boot/authentication.js",
-    "D:/Documents/GitKraken/TTFL-Loopback/server/boot/root.js",
-    "D:/Documents/GitKraken/TTFL-Loopback/server/boot/calcPickScores.js",
-    "D:/Documents/GitKraken/TTFL-Loopback/server/boot/boot.js"]
+var bootOptions = {
+  'appRootDir': __dirname,
+  'bootScripts': ['/home/romain/TTFL-Loopback/server/boot/authentication.js',
+    '/home/romain/TTFL-Loopback/server/boot/root.js',
+    '/home/romain/TTFL-Loopback/server/boot/boot.js'],
 };
 
 // Bootstrap the application, configure models, datasources and middleware.
