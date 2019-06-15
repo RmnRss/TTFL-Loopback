@@ -5,7 +5,7 @@ const request = require('request-promise');
 module.exports = function(Pick) {
 
   /***
-   * Remote method to get all picks ofa specific user
+   * Remote method to get all picks of a specific user
    * @param userId
    * @param cb
    */
@@ -162,6 +162,56 @@ module.exports = function(Pick) {
       },
       returns: {
         arg: 'picks',
+        type: 'array',
+      },
+    },
+  );
+
+  /***
+   * Remote method to get all banned nbaPlayers ID for a specific user
+   * @param cb
+   */
+  Pick.bannedPlayers = function(userId, cb) {
+    let today = new Date();
+    let index = 0;
+    let bannedIds = new Array();
+
+    for (let i = 0; i <= 30; i++) {
+      // Formating date to API form
+      let yesterday = today.setDate(today.getDate() - 1);
+      let date = dateToAPIString(yesterday);
+
+      let filter = '{"where":{"userId":' + userId + ',"date":"' + date + '"}}';
+
+      Pick.find(JSON.parse(filter), function(err, pick) {
+
+        if(pick.length > 0){
+          bannedIds[index] = pick[0].nbaPlayerId;
+          console.log(bannedIds);
+          index++;
+        }
+
+        if(i == 30){
+        	cb(null, bannedIds);
+      	}
+    });
+    }
+  };
+
+  /***
+   * Declaring the results remote method
+   */
+  Pick.remoteMethod(
+    'bannedPlayers', {
+      http: {
+        path: '/bannedPlayers',
+        verb: 'get',
+      },
+      accepts: [
+        {arg: 'userId', type: 'number', http: {source: 'query'}},
+      ],
+      returns: {
+        arg: 'data',
         type: 'array',
       },
     },
