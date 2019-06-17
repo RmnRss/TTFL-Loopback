@@ -35,9 +35,9 @@
       "type": "boolean",
       "default": false
     },
-    "opponent": {
-      "type": "string",
-      "default": "opposing team"
+    "opposingTeamId": {
+      "type": "number",
+      "default": null
     },
     "rank": {
       "type": "number",
