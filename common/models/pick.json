@@ -34,6 +34,14 @@
     "isUpdated": {
       "type": "boolean",
       "default": false
+    },
+    "opponent": {
+      "type": "string",
+      "default": "opposing team"
+    },
+    "rank": {
+      "type": "number",
+      "default": null
     }
   },
   "validations": [],
