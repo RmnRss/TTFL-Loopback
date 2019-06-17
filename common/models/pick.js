@@ -10,9 +10,7 @@ module.exports = function(Pick) {
    * @param cb
    */
   Pick.ofUser = function(userId, cb) {
-    let filter = '{"where":{"userId":"' + userId + '"}}';
-
-    Pick.find(JSON.parse(filter), function(err, instance) {
+    Pick.find({order: 'date ASC', where: {"userId":userId}}, function(err, instance) {
       //console.log(instance.length + ' picks found');
       cb(null, instance);
     });
@@ -57,7 +55,7 @@ module.exports = function(Pick) {
       json: true, // Automatically parses the JSON string in the response
     };
 
-    let today = new Date('11 June, 2019');
+    let today = getToday();
 
     // ----- SCRIPT -----//
 
@@ -137,15 +135,13 @@ module.exports = function(Pick) {
    * @param cb
    */
   Pick.results = function(cb) {
-    let today = new Date();
+    let today = getToday();
 
     // Formating date to API form
     let yesterday = today.setDate(today.getDate() - 1);
     let date = dateToAPIString(yesterday);
-    //console.log(date);
-    let filter = '{"where":{"date":"' + date + '"}}';
 
-    Pick.find(JSON.parse(filter), function(err, instance) {
+    Pick.find({order: 'score DESC', where: {"date":date}}, function(err, instance) {
       //console.log(instance.length + ' picks found');
       cb(null, instance);
     });
@@ -172,7 +168,7 @@ module.exports = function(Pick) {
    * @param cb
    */
   Pick.bannedPlayers = function(userId, cb) {
-    let today = new Date();
+    let today = getToday();
     let index = 0;
     let bannedIds = new Array();
 
@@ -220,6 +216,13 @@ module.exports = function(Pick) {
 };
 
 //----- METHODS -----//
+
+/***
+	Gets today's date usefull for debug
+*/
+function getToday(){
+	return new Date('21 May, 2019');
+}
 
 /***
  Converts timestamp date to a string : YearMonthDay
